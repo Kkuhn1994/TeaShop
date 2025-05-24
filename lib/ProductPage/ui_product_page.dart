@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:teashop/ShopPage/ui_shop_page.dart';
+import 'package:teashop/ShoppingCart/ui_shopping_cart.dart';
 
 class ProductDetailPage extends StatelessWidget {
   final Product product;
@@ -69,13 +70,34 @@ class ProductDetailPage extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
-                  // Hier kannst du Logik zum Kaufen oder zum Warenkorb hinzufügen
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(content: Text('Produkt zum Warenkorb hinzugefügt!')),
                   );
                 },
                 child: const Text(
                   'In den Warenkorb',
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
+            ),
+            Center(
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.deepPurple,
+                  padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 14),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+                onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => CartPageUI(),
+                  ),
+                );
+                },
+                child: const Text(
+                  'Zum Warenkorb',
                   style: TextStyle(fontSize: 18),
                 ),
               ),
