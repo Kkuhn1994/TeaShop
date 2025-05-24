@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+import 'package:teashop/ShopPage/ui_shop_page.dart' show TeaShopProductOverview;
+
 class TeaShopLandingPage extends StatelessWidget {
   final String title;
 
@@ -42,8 +45,13 @@ class TeaShopLandingPage extends StatelessWidget {
               const SizedBox(height: 40),
 
               ElevatedButton(
-                onPressed: () {
-                },
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => TeaShopProductOverview(),
+                  ),
+                );
+              },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.deepPurple,
                   padding:
