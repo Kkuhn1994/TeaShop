@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:teashop/ProductPage/ui_product_page.dart';
 
 class Product {
@@ -89,11 +90,7 @@ class TeaShopProductOverview extends StatelessWidget {
                 ),
               ),
               onTap: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => ProductDetailPage(product: product),
-                  ),
-                );
+                context.go('/productcard');
               },
             ),
           );

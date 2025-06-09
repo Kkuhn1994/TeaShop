@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:teashop/ShopPage/ui_shop_page.dart';
 import 'package:teashop/ShoppingCart/ui_shopping_cart.dart';
 
@@ -90,11 +91,7 @@ class ProductDetailPage extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => CartPageUI(),
-                  ),
-                );
+                 context.go('/shoppingcart');
                 },
                 child: const Text(
                   'Zum Warenkorb',

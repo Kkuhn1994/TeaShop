@@ -1,15 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:teashop/ShopPage/ui_shop_page.dart' show TeaShopProductOverview;
 
 class TeaShopLandingPage extends StatelessWidget {
-  final String title;
 
-  const TeaShopLandingPage({super.key, required this.title});
+
+  const TeaShopLandingPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(title: Row(children: [
+      Spacer(), // Schiebt den Button nach rechts
+      IconButton(
+        icon: Icon(Icons.verified_user),
+        onPressed: () {
+          context.go('/login');
+        },
+      ),
+      ],)),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 64),
@@ -22,7 +32,7 @@ class TeaShopLandingPage extends StatelessWidget {
               ),
               const SizedBox(height: 32),
               Text(
-                title,
+                'EcoFitSip',
                 style: const TextStyle(
                   fontSize: 42,
                   fontWeight: FontWeight.bold,
@@ -46,11 +56,7 @@ class TeaShopLandingPage extends StatelessWidget {
 
               ElevatedButton(
               onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => TeaShopProductOverview(),
-                  ),
-                );
+               context.go('/products');
               },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.deepPurple,
