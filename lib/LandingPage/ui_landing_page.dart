@@ -36,7 +36,7 @@ class TeaShopLandingPage extends StatelessWidget {
                 style: const TextStyle(
                   fontSize: 42,
                   fontWeight: FontWeight.bold,
-                  color: Colors.deepPurple,
+                  color: Colors.yellow,
                 ),
                 textAlign: TextAlign.center,
               ),

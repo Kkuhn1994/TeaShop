@@ -44,6 +44,10 @@ class MyApp extends StatelessWidget {
           builder: (context, state) => TeaShopLandingPage(),
         ),
         GoRoute(
+          path: '/auth/callback',
+          builder: (context, state) => TeaShopProductOverview(),
+        ),
+        GoRoute(
           path: '/products',
           builder: (context, state) => TeaShopProductOverview(),
         ),
