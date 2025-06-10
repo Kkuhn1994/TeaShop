@@ -18,8 +18,9 @@ class AuthCubit extends Cubit<AuthStatus> {
 
 
   Future<void> signUp(String email, String password) async {
+    
     emit(AuthLoading());
-
+    emit(AuthPending());
     try {
       final authResponse = await _supabase.auth.signUp(
         email: email.trim(),
@@ -30,8 +31,9 @@ class AuthCubit extends Cubit<AuthStatus> {
       if (authResponse.user == null) {
         throw AuthException('Registration failed: No user returned');
       }
+      emit(AuthPending());
       final userData =
-          await _supabase
+        await _supabase
               .from('users')
               .insert({
                 'id': authResponse.user!.id,
@@ -40,38 +42,45 @@ class AuthCubit extends Cubit<AuthStatus> {
               })
               .select()
               .single();
-      authenticateWithRole(authResponse, userData);
+        emit(AuthPending());
     } on AuthException catch (e) {
       debugPrint('sigupError');
       emit(AuthError(e.message));
     }
   }
 
-  Future<void> signIn(String email, String password) async {
+  Future<void> signIn(String email, String password) async 
+  {
     emit(AuthLoading());
+
     try {
       final response = await _supabase.auth.signInWithPassword(
         email: email.trim(),
         password: password.trim(),
       );
+emit(AuthAuthenticated());
+      final session = _supabase.auth.currentSession;
       if (response.user == null) {
         throw AuthException('Authentication failed');
       }
+      // if (session == null || session.user.emailConfirmedAt == null) {
+      // throw AuthException('Bitte bestätige deine E-Mail-Adresse, bevor du dich einloggst.');
+      // }
       final userData =
           await _supabase
               .from('users')
               .select()
               .eq('id', response.user!.id)
               .single();
-
-      authenticateWithRole(response, userData);
+        
     } on AuthException catch (e) {
       debugPrint('sigInError');
       emit(AuthError(e.message));
     }
   }
 
-  Future<void> signOut() async {
+  Future<void> signOut() async 
+  {
     emit(AuthLoading());
     try {
       await _supabase.auth.signOut();
@@ -81,13 +90,4 @@ class AuthCubit extends Cubit<AuthStatus> {
     }
   }
 
-  void authenticateWithRole(AuthResponse authResponse,Map<String, dynamic> userData,) 
-  {
-      final authenticatedUser = AuthenticatedUser(
-        supabaseUser: authResponse.user!,
-        profileData: userData,
-      );
-      emit(AuthAuthenticated(authenticatedUser));
-      debugPrint('auth success');
-  }
 }

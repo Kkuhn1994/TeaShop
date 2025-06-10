@@ -10,8 +10,12 @@ class AuthInitial extends AuthStatus {}
 class AuthLoading extends AuthStatus {}
 
 class AuthAuthenticated extends AuthStatus {
-  final AuthenticatedUser user; // Verwendet dein benutzerdefiniertes Modell
-  const AuthAuthenticated(this.user);
+  const AuthAuthenticated();
+}
+
+class AuthPending extends AuthStatus {
+
+  const AuthPending();
 }
 
 class AuthUnauthenticated extends AuthStatus {}
