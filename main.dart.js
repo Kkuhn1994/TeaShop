@@ -86212,7 +86212,6 @@ rd(a,b){return this.Zf(a,b)},
 Zf(a,b){var s=0,r=A.A(t.H),q=1,p=[],o=this,n,m,l,k,j,i
 var $async$rd=A.w(function(c,d){if(c===1){p.push(d)
 s=q}while(true)switch(s){case 0:o.l4(new A.x5())
-o.l4(new A.lV("test"))
 q=3
 k=o.x
 s=6
@@ -86223,6 +86222,7 @@ if(n.b==null){k=A.iq("Authentication failed",null,null)
 throw A.d(k)}s=7
 return A.u(k.Hk("users").Bv(0).Ui("id",n.b.a).w6(0),$async$rd)
 case 7:m=d
+o.l4(new A.lV("test"))
 n.b.toString
 o.l4(new A.x4())
 A.wy().$1("auth success")
