@@ -20,7 +20,6 @@ class AuthCubit extends Cubit<AuthStatus> {
   Future<void> signUp(String email, String password) async {
     
     emit(AuthLoading());
-    emit(AuthPending());
     try {
       final authResponse = await _supabase.auth.signUp(
         email: email.trim(),
@@ -31,7 +30,7 @@ class AuthCubit extends Cubit<AuthStatus> {
       if (authResponse.user == null) {
         throw AuthException('Registration failed: No user returned');
       }
-      emit(AuthPending());
+      
       final userData =
         await _supabase
               .from('users')

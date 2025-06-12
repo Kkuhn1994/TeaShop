@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:teashop/Core/ui_core.dart';
 import 'package:teashop/LoginPage/AuthUtils/auth_status.dart';
 import 'package:teashop/LoginPage/Cubit/auth_cubit.dart';
 
@@ -75,21 +76,23 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: () => login(
+            
+                Button1(
+                  onPressed: () => login(
                         emailController.text,
                         passwordController.text,
                         context,
                       ), 
-                child: Text('Login')),
+                child: '       Login       '),
               SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: () => signUp(
+              
+                Button1(
+                  onPressed: () => signUp(
                         emailController.text,
                         passwordController.text,
                         context,
                       ), 
-                child: Text('Registrierung')),
+                child: 'Registrierung'),
             ],
           ),
         ),

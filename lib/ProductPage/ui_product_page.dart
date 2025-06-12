@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:teashop/Core/app_bar_button.dart';
+import 'package:teashop/Core/ui_core.dart';
 import 'package:teashop/ShopPage/ui_shop_page.dart';
 import 'package:teashop/ShoppingCart/ui_shopping_cart.dart';
 
@@ -12,7 +14,15 @@ class ProductDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(product.name),
+        title: Row( 
+          children: [
+            Text(product.name),
+            Spacer(), // Pushes the button to the right
+            AppBarButton(
+                text: 'Zum Warenkorb',
+                iconPath: 'assets/shoppingcart.png',
+              ),
+            ]),
         backgroundColor: Colors.deepPurple,
       ),
       body: SingleChildScrollView(
@@ -62,43 +72,11 @@ class ProductDetailPage extends StatelessWidget {
 
             // Optional: Button zum Kaufen / Warenkorb
             Center(
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.deepPurple,
-                  padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 14),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                ),
-                onPressed: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Produkt zum Warenkorb hinzugefügt!')),
-                  );
-                },
-                child: const Text(
-                  'In den Warenkorb',
-                  style: TextStyle(fontSize: 18),
-                ),
-              ),
+              child: Button1(
+                onPressed: () {},
+                child: 'Zum Warenkorb hinzufügen')
             ),
-            Center(
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.deepPurple,
-                  padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 14),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                ),
-                onPressed: () {
-                 context.go('/shoppingcart');
-                },
-                child: const Text(
-                  'Zum Warenkorb',
-                  style: TextStyle(fontSize: 18),
-                ),
-              ),
-            ),
+       
           ],
         ),
       ),
