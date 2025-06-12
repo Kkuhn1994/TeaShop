@@ -11,7 +11,7 @@ class TeaShopLandingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StandardAppBar(
+    return StandardScaffold(
       appbar: AppBar(
           backgroundColor: Colors.deepPurple, // <-- Set background color
           title: Row(

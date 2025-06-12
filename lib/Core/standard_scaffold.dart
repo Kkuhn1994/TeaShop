@@ -1,10 +1,11 @@
 
 import 'package:flutter/material.dart';
 
-class StandardAppBar extends StatelessWidget {
+class StandardScaffold extends StatelessWidget {
   final AppBar appbar;
   final Widget body;
-  const StandardAppBar({
+
+  const StandardScaffold({
     Key? key,
     required this.appbar,
     required this.body,
@@ -14,8 +15,41 @@ class StandardAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appbar,
-      body: body,
+      body: Stack(
+        fit: StackFit.expand,
+        children: [
+          // Hintergrundbild
+          Image.asset(
+            'assets/background.jpg',
+            fit: BoxFit.cover,
+          ),
+          
+          // Farbfilter oder Opazität für Abdunkelung
+          Container(
+            color: Colors.white.withOpacity(0.7), // oder z.B. Colors.white.withOpacity(0.3)
+          ),
+
+          // Der eigentliche Inhalt
+          Center(
+            child: Container(
+              padding: const EdgeInsets.all(10),
+              margin: const EdgeInsets.all(50),
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.8),
+                borderRadius: BorderRadius.circular(12),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.3),
+                    blurRadius: 10,
+                    offset: Offset(0, 4),
+                  ),
+                ],
+              ),
+              child: SingleChildScrollView(child: body),
+            ),)
+        ],
+      ),
     );
-}
+  }
 }
 
