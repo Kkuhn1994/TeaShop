@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:teashop/Core/standard_scaffold.dart';
 
 class CartPageUI extends StatelessWidget {
   const CartPageUI({super.key});
@@ -27,8 +28,8 @@ class CartPageUI extends StatelessWidget {
       },
     ];
 
-    return Scaffold(
-      appBar: AppBar(
+    return StandardScaffold(
+      appbar: AppBar(
         title: const Text('Warenkorb'),
         backgroundColor: Colors.deepPurple,
       ),

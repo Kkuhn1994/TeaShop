@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:teashop/Core/standard_scaffold.dart';
 import 'package:teashop/Core/ui_core.dart';
 import 'package:teashop/LoginPage/AuthUtils/auth_status.dart';
 import 'package:teashop/LoginPage/Cubit/auth_cubit.dart';
@@ -52,9 +53,15 @@ class LoginPage extends StatelessWidget {
           );
         }
     },
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('Login'),
+      child: StandardScaffold(
+        appbar: AppBar(
+          title: Text(
+            'Login',
+            style: TextStyle(
+              color: Colors.white, // Set the text color to white
+            ),
+          ),
+          backgroundColor: Colors.deepPurple, 
         ),
         body: Padding(
           padding: const EdgeInsets.all(16.0),

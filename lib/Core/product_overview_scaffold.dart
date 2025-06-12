@@ -1,12 +1,12 @@
 
 import 'package:flutter/material.dart';
 
-class StandardScaffold extends StatelessWidget {
+class ProductScaffold extends StatelessWidget {
   final AppBar appbar;
   final Widget body;
   Widget ?bottomNavigationBar;
 
-  StandardScaffold({
+  ProductScaffold({
     Key? key,
     required this.appbar,
     required this.body,
@@ -32,27 +32,11 @@ class StandardScaffold extends StatelessWidget {
           ),
 
           // Der eigentliche Inhalt
-          Center(
-            child: Container(
-              padding: const EdgeInsets.all(10),
-              margin: const EdgeInsets.all(50),
-              decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.8),
-                borderRadius: BorderRadius.circular(12),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.3),
-                    blurRadius: 10,
-                    offset: Offset(0, 4),
-                  ),
-                ],
-              ),
-              child: SingleChildScrollView(child: body),
-            ),)
+          body,
+        
         ],
       ),
       bottomNavigationBar: bottomNavigationBar,
     );
   }
 }
-
