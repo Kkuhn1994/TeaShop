@@ -44,31 +44,6 @@ class MyApp extends StatelessWidget {
           builder: (context, state) => TeaShopLandingPage(),
         ),
         GoRoute(
-          path: '/auth/callback',
-          builder: (context, state) => TeaShopProductOverview(),
-        ),
-        GoRoute(
-          path: '/products',
-          builder: (context, state) => TeaShopProductOverview(),
-        ),
-        GoRoute(
-          path: '/shoppingcart',
-          builder: (context, state) => CartPageUI(),
-        ),
-        GoRoute(
-          path: '/login',
-          builder: (context, state) => LoginPage(),
-        ),
-        GoRoute(
-          path: '/loginOrder',
-          builder: (context, state) => LoginPageOrder(),
-        ),
-        
-         GoRoute(
-          path: '/adressInput',
-          builder: (context, state) => LoginPage(),
-        ),
-        GoRoute(
           path: '/referral/:code', // Hier reagieren wir auf den Referral-Link
           builder: (context, state) {
   // Extrahiere den Referral-Code aus der URL
