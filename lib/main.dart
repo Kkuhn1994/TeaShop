@@ -6,6 +6,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:teashop/LandingPage/ui_landing_page.dart';
 import 'package:teashop/LoginPage/AuthUtils/auth_service.dart';
 import 'package:teashop/LoginPage/Cubit/auth_cubit.dart';
+import 'package:teashop/LoginPage/UI/login_order_page.dart';
 import 'package:teashop/LoginPage/UI/login_registration_page.dart';
 import 'package:teashop/ProductLogic/product_cubit.dart';
 import 'package:teashop/ProductPage/ui_product_page.dart';
