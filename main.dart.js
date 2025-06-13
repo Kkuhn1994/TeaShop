@@ -87478,7 +87478,7 @@ $1(a){if(B.c.p(J.cE(a.a),"data.physical != 0"))return
 A.aFU().$1(a)},
 $S:570}
 A.Mr.prototype={
-N(a){var s=null,r=A.aMH("/",A.b([A.tk(new A.aci(),s,"/"),A.tk(new A.acj(),s,"/auth/callback"),A.tk(new A.ack(),s,"/products"),A.tk(new A.acl(),s,"/shoppingcart"),A.tk(new A.acm(),s,"/login"),A.tk(new A.acn(),s,"/referral")],t.yo)),q=A.b([A.azR(new A.aco(),t.Rv),A.azR(new A.acp(),t.N7)],t.Ds)
+N(a){var s=null,r=A.aMH("/",A.b([A.tk(new A.aci(),s,"/"),A.tk(new A.acj(),s,"/auth/callback"),A.tk(new A.ack(),s,"/products"),A.tk(new A.acl(),s,"/shoppingcart"),A.tk(new A.acm(),s,"/login"),A.tk(new A.acn(),s,"/referral/:code")],t.yo)),q=A.b([A.azR(new A.aco(),t.Rv),A.azR(new A.acp(),t.N7)],t.Ds)
 return A.aNN(new A.tO(r,"EcoFitSip TeaShop",A.vc(s,A.aAh(B.a3,s,s,B.br),s),s),q)}}
 A.aci.prototype={
 $2(a,b){return new A.v2(null)},
@@ -87496,7 +87496,7 @@ A.acm.prototype={
 $2(a,b){return A.aC5()},
 $S:211}
 A.acn.prototype={
-$2(a,b){b.w.h(0,"referralCode")
+$2(a,b){b.r.h(0,"code")
 A.mw(B.r,new A.ach(a),t.P)
 return A.aC5()},
 $S:211}
