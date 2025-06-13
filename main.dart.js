@@ -26471,9 +26471,8 @@ ack:function ack(){},
 acl:function acl(){},
 acm:function acm(){},
 acn:function acn(){},
-ach:function ach(a,b){this.a=a
-this.b=b},
-acg:function acg(a){this.a=a},
+ach:function ach(a){this.a=a},
+acg:function acg(){},
 acf:function acf(a){this.a=a},
 aco:function aco(){},
 acp:function acp(){},
@@ -87496,8 +87495,8 @@ $2(a,b){var s=$.aw()
 return new A.tI(new A.v5(B.kn,s),new A.v5(B.kn,s),null)},
 $S:574}
 A.acn.prototype={
-$2(a,b){var s=b.w.h(0,"referralCode")
-if(s!=null)A.mw(B.r,new A.ach(a,s),t.P)
+$2(a,b){b.w.h(0,"referralCode")
+A.mw(B.r,new A.ach(a),t.P)
 return new A.qy(null)},
 $S:210}
 A.ach.prototype={
@@ -87508,11 +87507,11 @@ p=A.pJ(q,!0)
 r=A.aw2(q).z
 if(r==null)r=A.a5(q).aZ.z
 if(r==null)r=B.J
-p.kx(A.aLy(null,r,!0,null,new A.acg(this.b),q,null,s,B.z1,!0,t.z))},
+p.kx(A.aLy(null,r,!0,null,new A.acg(),q,null,s,B.z1,!0,t.z))},
 $S:13}
 A.acg.prototype={
 $1(a){var s=null
-return new A.ro(A.cQ("Referral Code Detected",s,s,s,s,s,s),A.cQ("You have been referred with the code: "+this.a,s,s,s,s,s,s),A.b([A.ajg(A.cQ("OK",s,s,s,s,s,s),new A.acf(a),s)],t.p),s)},
+return new A.ro(A.cQ("Referral Code Detected",s,s,s,s,s,s),A.cQ("You have been referred with the code:",s,s,s,s,s,s),A.b([A.ajg(A.cQ("OK",s,s,s,s,s,s),new A.acf(a),s)],t.p),s)},
 $S:575}
 A.acf.prototype={
 $0(){A.pJ(this.a,!1).eq()},
