@@ -39,7 +39,7 @@ class TeaShopLandingPage extends StatelessWidget {
               ),
               const SizedBox(height: 32),
               Text(
-                'EcoFitSip',
+                'EcoFitSip Version 1',
                 style: const TextStyle(
                   fontSize: 42,
                   fontWeight: FontWeight.bold,
