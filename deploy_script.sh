@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Variablen anpassen
-# GITHUB_USERNAME="Kkuhn1994"
+GITHUB_USERNAME="Kkuhn1994"
 REPO_NAME="TeaShop"
 BASE_HREF="/TeaShop/"  # wichtig für Flutter Web
 REPO_URL="https://github.com/$GITHUB_USERNAME/$REPO_NAME.git"
@@ -23,7 +23,7 @@ echo "7. Commit erstellen..."
 git commit -m "Deploy Flutter Web App to GitHub Pages"
 
 echo "8. Auf GitHub pushen (force)..."
-git push -f origin $BRANCH
+git push  --force origin $BRANCH
 
 echo "Fertig! Deine Flutter Web App wurde auf GitHub Pages deployed."
 cd ../..

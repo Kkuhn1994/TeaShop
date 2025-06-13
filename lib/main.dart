@@ -61,6 +61,15 @@ class MyApp extends StatelessWidget {
           builder: (context, state) => LoginPage(),
         ),
         GoRoute(
+          path: '/loginOrder',
+          builder: (context, state) => LoginPageOrder(),
+        ),
+        
+         GoRoute(
+          path: '/adressInput',
+          builder: (context, state) => LoginPage(),
+        ),
+        GoRoute(
           path: '/referral/:code', // Hier reagieren wir auf den Referral-Link
           builder: (context, state) {
   // Extrahiere den Referral-Code aus der URL
