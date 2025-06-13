@@ -86624,7 +86624,7 @@ s=6
 return A.u(l.gi3().w7(B.c.kB(a),B.c.kB(b)),$async$rg)
 case 6:n=d
 k=t.z
-k=l.UJ("users").c4(0,A.a7(["referral_link","https://kkuhn1994.github.io/TeaShop/referral/#/"+n.b.a],k,k)).Uj("id",n.b.a).YF(0)
+k=l.UJ("users").c4(0,A.a7(["referred_by","kun"],k,k)).Uj("id",n.b.a).YF(0)
 l=t.N
 l=A.cR(k.b,l,l)
 l.m(0,"Accept","application/vnd.pgrst.object+json")
