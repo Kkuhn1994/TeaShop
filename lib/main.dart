@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:teashop/AdressInput/adress_input.dart';
 
 import 'package:teashop/LandingPage/ui_landing_page.dart';
 import 'package:teashop/LoginPage/AuthUtils/auth_service.dart';
@@ -66,7 +67,7 @@ class MyApp extends StatelessWidget {
         
          GoRoute(
           path: '/adressInput',
-          builder: (context, state) => LoginPage(),
+          builder: (context, state) => AdressInput(),
         ),
         GoRoute(
           path: '/referral/:code', // Hier reagieren wir auf den Referral-Link

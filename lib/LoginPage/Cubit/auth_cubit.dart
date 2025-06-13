@@ -55,10 +55,10 @@ class AuthCubit extends Cubit<AuthStatus> {
               .select()
               .single();
       emit(AuthAuthenticated());
-      // final session = _supabase.auth.currentSession;
-      // if (response.user == null) {
-      //   throw AuthException('Authentication failed');
-      // }
+      final session = _supabase.auth.currentSession;
+      if (response.user == null) {
+        throw AuthException('Authentication failed');
+      }
 
 
 

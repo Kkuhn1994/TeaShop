@@ -6,6 +6,11 @@ import 'package:teashop/Core/standard_scaffold.dart';
 import 'package:teashop/Core/ui_core.dart';
 import 'package:teashop/LoginPage/AuthUtils/auth_status.dart';
 import 'package:teashop/LoginPage/Cubit/auth_cubit.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:teashop/LoginPage/AuthUtils/auth_status.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginPage extends StatelessWidget {
   // Controller für die Eingabefelder
@@ -29,7 +34,7 @@ class LoginPage extends StatelessWidget {
       {
         if (state is AuthPending) 
         {
-          context.go('/products');
+          context.go('/adressInput');
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text("pls confirm email"),
@@ -40,7 +45,7 @@ class LoginPage extends StatelessWidget {
         }
         else if (state is AuthAuthenticated) 
         {
-          context.go('/products');
+          context.go('/adressInput');
         
         }
         else if (state is AuthError) 
