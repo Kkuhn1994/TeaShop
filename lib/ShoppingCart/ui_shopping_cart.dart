@@ -106,7 +106,7 @@ class CartPageUI extends StatelessWidget {
             ),
             Button1(
               onPressed: () {
-                context.go('/adressInput')
+                context.go('/loginOrder')
               }, 
               child: 'Zur Kasse'),
             
