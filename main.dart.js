@@ -87346,7 +87346,7 @@ case 6:n=d
 if(n.b==null){l=A.iw("Registration failed: No user returned",null,null)
 throw A.d(l)}l=l.Hu("users")
 k=t.N
-j=A.a8(["id",n.b.a,"email",a,"referral_link","https://github.com/Kkuhn1994/TeaShop/referral/"+A.k(n)+".user!.id","created_at",new A.dd(Date.now(),0,!1).Jg()],k,k)
+j=A.a8(["id",n.b.a,"email",a,"referral_link","https://github.com/Kkuhn1994/TeaShop/referral/"+n.b.a,"created_at",new A.dd(Date.now(),0,!1).Jg()],k,k)
 k=A.cN(l.b,k,k)
 k.m(0,"Prefer","")
 s=7
