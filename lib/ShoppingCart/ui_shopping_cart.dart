@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:teashop/Core/back_button.dart';
 import 'package:teashop/Core/cannotHitARenderBoxScaffold.dart';
+import 'package:teashop/Core/productNumber.dart';
 import 'package:teashop/Core/standard_scaffold.dart';
 import 'package:teashop/Core/ui_core.dart';
+import 'package:teashop/ProductLogic/product_cubit.dart';
+import 'package:teashop/ProductLogic/product_state.dart';
 
 class CartPageUI extends StatelessWidget {
   const CartPageUI({super.key});
@@ -10,6 +14,7 @@ class CartPageUI extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Beispielhafte Dummy-Produkte
+    final List<double> prices = [4.99, 5.49, 6.25, 10];
     final products = [
       {
         'name': 'Jasmin Grüntee',
@@ -35,7 +40,9 @@ class CartPageUI extends StatelessWidget {
       appbar: AppBar(
         title: const Text('Warenkorb'),
         backgroundColor: Colors.deepPurple,
-        leading: GoBackButton(),
+        leading: GoBackButton(
+          location: '/products',
+        ),
       ),
       body: Container(
         padding: EdgeInsets.all(10),
@@ -50,22 +57,25 @@ class CartPageUI extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: ListTile(
-                contentPadding: const EdgeInsets.all(12),
-                title: Text(
-                  product['name']!.toString(),
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
+              child: BlocBuilder<NumberCubit, ProductState>(
+                builder: (context, state) {
+                  return ListTile(
+                  contentPadding: const EdgeInsets.all(12),
+                  title: Text(
+                    product['name']!.toString(),
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
                   ),
+                  subtitle: Text('€${(product['price'] as double).toStringAsFixed(2)}'),
+                   trailing: SizedBox(
+                  width: 120, // Set a fixed width to prevent overflow
+                  child: ProductNumber(index: index, context: context),
                 ),
-                subtitle: Text('€${(product['price'] as double).toStringAsFixed(2)}'),
-                trailing: IconButton(
-                  icon: const Icon(Icons.delete, color: Colors.red),
-                  onPressed: () {
-                    // Hier keine Logik, nur UI
-                  },
-                ),
+                );
+                 }
+                
               ),
             );
           },
@@ -77,13 +87,22 @@ class CartPageUI extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text(
-              'Gesamt: €16.73',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: Colors.deepPurple,
-              ),
+            BlocBuilder<NumberCubit, ProductState>(
+              builder: (context, state) {
+                double gesamtWert = 0.0;
+                for (int i = 0; i < state.numbers.length; i++) {
+                  gesamtWert += state.numbers[i] * prices[i];
+                }
+                return Text(
+                'Gesamt: €${gesamtWert.toStringAsFixed(2)}',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.deepPurple,
+                ),
+              );
+              },
+              
             ),
             Button1(
               onPressed: () {}, 

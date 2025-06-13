@@ -1,37 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:teashop/Core/app_bar_button.dart';
 import 'package:teashop/Core/back_button.dart';
+import 'package:teashop/Core/productNumber.dart';
 import 'package:teashop/Core/standard_scaffold.dart';
 import 'package:teashop/Core/ui_core.dart';
+import 'package:teashop/ProductLogic/product_cubit.dart';
+import 'package:teashop/ProductLogic/product_state.dart';
 import 'package:teashop/ShopPage/ui_shop_page.dart';
 import 'package:teashop/ShoppingCart/ui_shopping_cart.dart';
 
 class ProductDetailPage extends StatefulWidget {
   final Product product;
-  const ProductDetailPage({super.key, required this.product});
+  final int index;
+  const ProductDetailPage({
+    super.key, 
+    required this.product,
+    required this.index
+  });
 
   @override
   State<ProductDetailPage> createState() => _ProductDetailPageState();
 }
 
 class _ProductDetailPageState extends State<ProductDetailPage> {
-  int productQuantity = 0;
 
-   void _increaseQuantity() 
-   {
-    setState(() {
-      productQuantity++;
-    });
-  }
 
-  void _decreaseQuantity() {
-    setState(() {
-      if (productQuantity > 0) {
-        productQuantity--;
-      }
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -98,35 +93,15 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
               style: const TextStyle(fontSize: 18),
             ),
             const SizedBox(height: 24),
-
-            // Optional: Button zum Kaufen / Warenkorb
             Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [ IconButton(
-            icon:Image.asset(
-            'assets/minus.png',
-            height: 24,
-            width: 24,
-          ),
-            onPressed: _decreaseQuantity, // Menge verringern
-                        ),
-                        Text(
-            '$productQuantity', // Zeigt die aktuelle Produktzahl an
-            style: TextStyle(fontSize: 20),
-                        ),
-                        IconButton(
-            icon: Image.asset(
-            'assets/add.png',
-            height: 24,
-            width: 24,
-          ),
-            onPressed: _increaseQuantity, // Menge erhöhen
-                        ),
-                        Button1(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ProductNumber(index: widget.index, context: context,),
+                Button1(
                 onPressed: () {},
-                child: 'Zum Warenkorb hinzufügen'),],
-            ),
-       
+                child: 'Zum Warenkorb hinzufügen'),
+            ],),
+
           ],
         ),
       ),

@@ -7,6 +7,7 @@ import 'package:teashop/LandingPage/ui_landing_page.dart';
 import 'package:teashop/LoginPage/AuthUtils/auth_service.dart';
 import 'package:teashop/LoginPage/Cubit/auth_cubit.dart';
 import 'package:teashop/LoginPage/UI/login_registration_page.dart';
+import 'package:teashop/ProductLogic/product_cubit.dart';
 import 'package:teashop/ProductPage/ui_product_page.dart';
 import 'package:teashop/ShopPage/ui_shop_page.dart';
 import 'package:teashop/ShoppingCart/ui_shopping_cart.dart';
@@ -69,7 +70,10 @@ class MyApp extends StatelessWidget {
         providers: [
         BlocProvider<AuthCubit>(
           create: (context) => AuthCubit(Supabase.instance.client),
+        
         ),
+        BlocProvider<NumberCubit>(
+          create: (context) => NumberCubit(),)
         ],
         child: MaterialApp.router(
         title: 'EcoFitSip TeaShop',

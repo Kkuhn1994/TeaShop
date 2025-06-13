@@ -97,7 +97,7 @@ class TeaShopProductOverview extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => ProductDetailPage(product: product),
+                    builder: (context) => ProductDetailPage(product: product, index: index,),
                   ),
                 );
               },
