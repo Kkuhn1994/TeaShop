@@ -4,18 +4,18 @@ import 'package:go_router/go_router.dart';
 class AppBarButton extends StatelessWidget {
   final String text;
   final String iconPath;
+  final VoidCallback onPressed;
   const AppBarButton({
     Key? key,
     required this.text,
-    required this.iconPath
+    required this.iconPath,
+    required this.onPressed,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {
-        context.go('/login');
-      },
+      onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.white,
         foregroundColor: Colors.black, // Text/Icon-Farbe

@@ -20,6 +20,9 @@ class TeaShopLandingPage extends StatelessWidget {
               AppBarButton(
                 text: 'Zum Login',
                 iconPath: 'assets/login2.png',
+                onPressed: () {
+                context.go('/login');
+              },
               ),
             ],
           ),

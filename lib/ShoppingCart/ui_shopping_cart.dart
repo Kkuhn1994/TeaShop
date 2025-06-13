@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:teashop/Core/back_button.dart';
+import 'package:teashop/Core/cannotHitARenderBoxScaffold.dart';
 import 'package:teashop/Core/standard_scaffold.dart';
+import 'package:teashop/Core/ui_core.dart';
 
 class CartPageUI extends StatelessWidget {
   const CartPageUI({super.key});
@@ -28,41 +31,45 @@ class CartPageUI extends StatelessWidget {
       },
     ];
 
-    return StandardScaffold(
+    return CannotHitRenderScaffold(
       appbar: AppBar(
         title: const Text('Warenkorb'),
         backgroundColor: Colors.deepPurple,
+        leading: GoBackButton(),
       ),
-      body: ListView.builder(
-        padding: const EdgeInsets.all(16),
-        itemCount: products.length,
-        itemBuilder: (context, index) {
-          final product = products[index];
-          return Card(
-            margin: const EdgeInsets.only(bottom: 16),
-            elevation: 3,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: ListTile(
-              contentPadding: const EdgeInsets.all(12),
-              title: Text(
-                product['name']!.toString(),
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
+      body: Container(
+        padding: EdgeInsets.all(10),
+        child: ListView.builder(
+          padding: const EdgeInsets.all(16),
+          itemCount: products.length,
+          itemBuilder: (context, index) {
+            final product = products[index];
+            return Card(
+              margin: const EdgeInsets.only(bottom: 16),
+              elevation: 3,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: ListTile(
+                contentPadding: const EdgeInsets.all(12),
+                title: Text(
+                  product['name']!.toString(),
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                ),
+                subtitle: Text('€${(product['price'] as double).toStringAsFixed(2)}'),
+                trailing: IconButton(
+                  icon: const Icon(Icons.delete, color: Colors.red),
+                  onPressed: () {
+                    // Hier keine Logik, nur UI
+                  },
                 ),
               ),
-              subtitle: Text('€${(product['price'] as double).toStringAsFixed(2)}'),
-              trailing: IconButton(
-                icon: const Icon(Icons.delete, color: Colors.red),
-                onPressed: () {
-                  // Hier keine Logik, nur UI
-                },
-              ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
       bottomNavigationBar: Container(
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
@@ -78,22 +85,10 @@ class CartPageUI extends StatelessWidget {
                 color: Colors.deepPurple,
               ),
             ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.deepPurple,
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-              ),
-              onPressed: () {
-                
-              },
-              child: const Text(
-                'Zur Kasse',
-                style: TextStyle(fontSize: 16),
-              ),
-            ),
+            Button1(
+              onPressed: () {}, 
+              child: 'Zur Kasse'),
+            
           ],
         ),
       ),

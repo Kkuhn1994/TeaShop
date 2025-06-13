@@ -26,6 +26,10 @@ flutter:
     - assets/login.png
     - assets/login2.png
     - assets/shoppingcart.png
+    - assets/add.png
+    - assets/minus.png
+    - assets/back.png
+    
     - assets/background.jpg
 
 # Dependencies specify other packages that your package needs in order to work.
