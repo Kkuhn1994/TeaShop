@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:teashop/Core/app_bar_button.dart';
 import 'package:teashop/Core/back_button.dart';
 import 'package:teashop/Core/productNumber.dart';
 import 'package:teashop/Core/standard_scaffold.dart';
 import 'package:teashop/Core/ui_core.dart';
-import 'package:teashop/ProductLogic/product_cubit.dart';
-import 'package:teashop/ProductLogic/product_state.dart';
 import 'package:teashop/ShopPage/ui_shop_page.dart';
-import 'package:teashop/ShoppingCart/ui_shopping_cart.dart';
 
 class ProductDetailPage extends StatefulWidget {
   final Product product;

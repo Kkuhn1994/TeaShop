@@ -1,6 +1,3 @@
-
-import 'package:teashop/LoginPage/AuthUtils/auth_user.dart';
-
 abstract class AuthStatus {
   const AuthStatus();
 }

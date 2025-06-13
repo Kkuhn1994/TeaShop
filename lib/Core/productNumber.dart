@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
-import 'package:teashop/Core/ui_core.dart';
 import 'package:teashop/ProductLogic/product_cubit.dart';
 import 'package:teashop/ProductLogic/product_state.dart';
 

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:teashop/LoginPage/AuthUtils/auth_status.dart';
-import 'package:teashop/LoginPage/AuthUtils/auth_user.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AuthCubit extends Cubit<AuthStatus> {

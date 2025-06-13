@@ -9,10 +9,8 @@ import 'package:teashop/LoginPage/Cubit/auth_cubit.dart';
 import 'package:teashop/LoginPage/UI/login_order_page.dart';
 import 'package:teashop/LoginPage/UI/login_registration_page.dart';
 import 'package:teashop/ProductLogic/product_cubit.dart';
-import 'package:teashop/ProductPage/ui_product_page.dart';
 import 'package:teashop/ShopPage/ui_shop_page.dart';
 import 'package:teashop/ShoppingCart/ui_shopping_cart.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
   await Supabase.initialize(

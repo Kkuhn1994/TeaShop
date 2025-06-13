@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:teashop/Core/back_button.dart';
 import 'package:teashop/Core/product_overview_scaffold.dart';
-import 'package:teashop/Core/standard_scaffold.dart';
 import 'package:teashop/ProductPage/ui_product_page.dart';
 
 class Product {
