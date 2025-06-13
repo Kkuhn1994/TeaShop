@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final GoRouter router = GoRouter(
       initialLocation: '/',
-      routes: [
+      routes: <RouteBase>[
         GoRoute(
           path: '/',
           builder: (context, state) => TeaShopLandingPage(),
@@ -52,10 +52,6 @@ class MyApp extends StatelessWidget {
           path: '/products',
           builder: (context, state) => TeaShopProductOverview(),
         ),
-        // GoRoute(
-        //   path: '/productcard',
-        //   builder: (context, state) => ProductDetailPage(),
-        // ),
         GoRoute(
           path: '/shoppingcart',
           builder: (context, state) => CartPageUI(),
@@ -63,6 +59,20 @@ class MyApp extends StatelessWidget {
         GoRoute(
           path: '/login',
           builder: (context, state) => LoginPage(),
+        ),
+        GoRoute(
+          path: '/referral/:code', // Hier reagieren wir auf den Referral-Link
+          builder: (context, state) {
+  // Extrahiere den Referral-Code aus der URL
+  final referralCode =  state.params['code'];
+
+  // Wenn ein Referral-Code vorhanden ist, zeigen wir einen Dialog an
+  if (referralCode != null) {
+    
+   
+  }
+            return TeaShopLandingPage();
+          },
         ),
       ],
     );
@@ -85,6 +95,27 @@ class MyApp extends StatelessWidget {
       );
   }
 }
+
+
+void _showReferralDialog(BuildContext context, String referralCode) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Referral Code'),
+          content: Text('Your referral code is: $referralCode'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Schließt den Dialog
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
 
 
 
