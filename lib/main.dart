@@ -11,12 +11,12 @@ import 'package:teashop/ProductLogic/product_cubit.dart';
 import 'package:teashop/ProductPage/ui_product_page.dart';
 import 'package:teashop/ShopPage/ui_shop_page.dart';
 import 'package:teashop/ShoppingCart/ui_shopping_cart.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
   await Supabase.initialize(
-    url: 'https://tbcmrtbpzmlpzbsodxoi.supabase.co',
-    anonKey:
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRiY21ydGJwem1scHpic29keG9pIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk0NzEyNDYsImV4cCI6MjA2NTA0NzI0Nn0.jomEnfjrVlXTAfuHAjfPUgxvB6-mp1f1ICCcBODep1g',
+    url: 'https://msflobbrlynctsfdzsdq.supabase.co',
+    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1zZmxvYmJybHluY3RzZmR6c2RxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk4MDM2MDUsImV4cCI6MjA2NTM3OTYwNX0.CCN6uT4a9FoYlpSjQpJ-P4GnbuKSAZX_tKk509r4Aj4',
   );
   final supabase = Supabase.instance.client;
   final authService = AuthService(supabase);

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Variablen anpassen
-GITHUB_USERNAME="Kkuhn1994"
+# GITHUB_USERNAME="Kkuhn1994"
 REPO_NAME="TeaShop"
 BASE_HREF="/TeaShop/"  # wichtig für Flutter Web
 REPO_URL="https://github.com/$GITHUB_USERNAME/$REPO_NAME.git"
