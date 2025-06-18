@@ -17,7 +17,7 @@ class LoginPageOrder extends StatelessWidget {
   }
 
   void signUp(String email, String password, BuildContext context) {
-    context.read<AuthCubit>().signUp(email, password);
+    context.read<AuthCubit>().signUp(email, password, context);
   }
 
   LoginPageOrder({super.key}); // Konstruktor

@@ -10,6 +10,7 @@ import 'package:teashop/LoginPage/Cubit/auth_cubit.dart';
 import 'package:teashop/LoginPage/UI/login_order_page.dart';
 import 'package:teashop/LoginPage/UI/login_registration_page.dart';
 import 'package:teashop/ProductLogic/product_cubit.dart';
+import 'package:teashop/ReferalLogic/referral_cubit.dart';
 import 'package:teashop/ShopPage/ui_shop_page.dart';
 import 'package:teashop/ShoppingCart/ui_shopping_cart.dart';
 
@@ -72,14 +73,15 @@ class MyApp extends StatelessWidget {
         GoRoute(
           path: '/referral/:code', // Hier reagieren wir auf den Referral-Link
           builder: (context, state) {
-  // Extrahiere den Referral-Code aus der URL
-  final referralCode =  state.params['code'];
+          final referralCode =  state.params['code'];
 
-  // Wenn ein Referral-Code vorhanden ist, zeigen wir einen Dialog an
-  if (referralCode != null) {
-    
-   
-  }
+          // Wenn ein Referral-Code vorhanden ist, zeigen wir einen Dialog an
+          if (referralCode != null) 
+          {
+              context.read<ReferralCubit>().setReferralCode(referralCode);
+              zeigeAlertDialog(context, referralCode);
+              return LoginPage();    
+          }
             return TeaShopLandingPage();
           },
         ),
@@ -92,7 +94,10 @@ class MyApp extends StatelessWidget {
         
         ),
         BlocProvider<NumberCubit>(
-          create: (context) => NumberCubit(),)
+          create: (context) => NumberCubit(),),
+        BlocProvider<ReferralCubit>(
+          create: (_) => ReferralCubit(),
+        ),
         ],
         child: MaterialApp.router(
         title: 'EcoFitSip TeaShop',
@@ -106,25 +111,26 @@ class MyApp extends StatelessWidget {
 }
 
 
-void _showReferralDialog(BuildContext context, String referralCode) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Referral Code'),
-          content: Text('Your referral code is: $referralCode'),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop(); // Schließt den Dialog
-              },
-              child: Text('OK'),
-            ),
-          ],
-        );
-      },
-    );
-  }
+void zeigeAlertDialog(BuildContext context, String ?message) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('Alert'),
+        content: Text(message ?? 'empty'),
+        actions: [
+          TextButton(
+            child: Text('OK'),
+            onPressed: () {
+              Navigator.of(context).pop(); // Dialog schließen
+            },
+          ),
+        ],
+      );
+    },
+  );
+}
+
 
 
 

@@ -22,7 +22,7 @@ class LoginPage extends StatelessWidget {
   }
 
   void signUp(String email, String password, BuildContext context) {
-    context.read<AuthCubit>().signUp(email, password);
+    context.read<AuthCubit>().signUp(email, password, context);
   }
 
   LoginPage({super.key}); // Konstruktor
@@ -34,7 +34,7 @@ class LoginPage extends StatelessWidget {
       {
         if (state is AuthPending) 
         {
-          context.go('/adressInput');
+          context.go('/products');
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text("pls confirm email"),
@@ -45,8 +45,7 @@ class LoginPage extends StatelessWidget {
         }
         else if (state is AuthAuthenticated) 
         {
-          context.go('/adressInput');
-        
+          context.go('/products');   
         }
         else if (state is AuthError) 
         {

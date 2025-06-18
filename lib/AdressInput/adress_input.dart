@@ -60,11 +60,8 @@ class _MyWidgetState extends State<AdressInput> {
             
                 Button1(
                   onPressed: () => {}, 
-                child: '       Login       '),
-              SizedBox(height: 16), 
-                Button1(
-                  onPressed: () {}, 
-                child: 'Registrierung'),
+                child: '       Kaufen       '),
+             
             ],
           ),
         ),);
