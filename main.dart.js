@@ -86628,7 +86628,6 @@ h=B.c.kB(a)
 s=6
 return A.u(i.ri(h,"https://kkuhn1994.github.io/TeaShop/auth/callback",B.c.kB(b)),$async$oE)
 case 6:n=d
-o.l8(new A.rv())
 m=n.b
 s=m!=null?7:8
 break
@@ -86640,7 +86639,8 @@ i=A.cL(j.b,i,i)
 i.m(0,"Prefer","")
 s=9
 return A.u(A.awI(j.CX(h,i,"POST",j.f),A.m(j).i("n6.T")),$async$oE)
-case 9:case 8:q=1
+case 9:case 8:o.l8(new A.rv())
+q=1
 s=5
 break
 case 3:q=2
@@ -86720,7 +86720,7 @@ A.tG.prototype={
 N(a){var s=this,r=null
 return A.avu(r,A.P5(A.oo(B.b3,new A.kK("/",r),A.cB("Login",r,r,r,A.fT(r,r,B.k,r,r,r,r,r,r,r,r,r,r,r,r,r,r,!0,r,r,r,r,r,r,r,r),r,r)),new A.cZ(B.cv,A.me(A.b([A.v6(s.c,A.pk(r,r,r,r,r,r,r,r,!0,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,"E-Mail",!0,r,r,r,r,r,r,r,r,r,r,r,r,r),B.hG,!1),A.ds(r,16,r),A.v6(s.d,A.pk(r,r,r,r,r,r,r,r,!0,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,"Passwort",!0,r,r,r,r,r,r,r,r,r,r,r,r,r),r,!0),A.ds(r,16,r),new A.iy(new A.a8n(s,a),"       Login       ",r),A.ds(r,16,r),new A.iy(new A.a8o(s,a),"Registrierung",r)],t.p),B.ad,B.aH,B.aW),r)),r,new A.a8p(),t.Rv,t.Pf)}}
 A.a8p.prototype={
-$2(a,b){var s,r="/adressInput",q=null
+$2(a,b){var s,r="/products",q=null
 if(b instanceof A.rv){s=a.ae(t.q0).x.d
 s===$&&A.a()
 s.sC(0,new A.dk(r,q,q))
