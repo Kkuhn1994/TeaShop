@@ -86526,7 +86526,7 @@ N(a){var s=null,r=A.aAL(s,s,B.b3,s,s,s,s,s,s,s,s,s,B.Du,s,new A.cN(A.hK(30),B.q)
 return A.aAK(A.cB(this.d,s,s,s,B.yT,s,s),this.c,r)}}
 A.qy.prototype={
 N(a){var s=null,r=t.p
-return A.P5(A.oo(B.b3,s,A.qh(A.b([new A.uT(s),new A.xp("Zum Login","assets/login2.png",new A.aiT(a),s)],r),B.ad,B.aH,B.aW)),A.jA(new A.cZ(B.Dt,A.me(A.b([A.awg(u.R,s,180,s),B.MR,A.cB("EcoFitSip Version 1",s,s,s,B.Qt,B.eR,s),B.eN,B.Sa,B.MS,new A.iy(new A.aiU(a),"Zu den Produkten",s)],r),B.ad,B.aH,B.eu),s),s,s))}}
+return A.P5(A.oo(B.b3,s,A.qh(A.b([new A.uT(s),new A.xp("Zum Login","assets/login2.png",new A.aiT(a),s)],r),B.ad,B.aH,B.aW)),A.jA(new A.cZ(B.Dt,A.me(A.b([A.awg(u.R,s,180,s),B.MR,A.cB("EcoFitSip",s,s,s,B.Qt,B.eR,s),B.eN,B.Sa,B.MS,new A.iy(new A.aiU(a),"Zu den Produkten",s)],r),B.ad,B.aH,B.eu),s),s,s))}}
 A.aiT.prototype={
 $0(){var s=this.a.ae(t.q0).x.d
 s===$&&A.a()
