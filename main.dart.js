@@ -87518,34 +87518,32 @@ case 6:case 1:return A.z(q,r)
 case 2:return A.y(o.at(-1),r)}})
 return A.A($async$tO,r)},
 oK(a,b,c){return this.Zv(a,b,c)},
-Zv(a,b,c){var s=0,r=A.B(t.H),q=1,p=[],o=this,n,m,l,k,j,i,h,g,f,e
-var $async$oK=A.x(function(d,a0){if(d===1){p.push(a0)
+Zv(a,b,c){var s=0,r=A.B(t.H),q=1,p=[],o=this,n,m,l,k,j,i,h
+var $async$oK=A.x(function(d,e){if(d===1){p.push(e)
 s=q}while(true)switch(s){case 0:o.iT(new A.xJ())
 q=3
-i=o.x
+j=o.x
 s=6
-return A.u(i.ghv().wn(B.c.kG(a),B.c.kG(b)),$async$oK)
-case 6:n=a0
+return A.u(j.ghv().wn(B.c.kG(a),B.c.kG(b)),$async$oK)
+case 6:n=e
 s=7
-return A.u(i.uO("users").Ke(0,"referral_code").zD("id",n.b.a).wp(0),$async$oK)
-case 7:m=a0
+return A.u(j.uO("users").Ke(0,"referral_code").zD("id",n.b.a).wp(0),$async$oK)
+case 7:m=e
 if(m!=null){l=J.ax(m,"referral_code")
-k=J.ax(m,"referral_number")
-h=A.e6(c,!1,t.a4)
-g=k
-h.iT(new A.pZ(g==null?0:g))
+J.ax(m,"referral_number")
+A.e6(c,!1,t.a4).iT(new A.pZ(10))
 A.e6(c,!1,t.kd).iT(l)}o.iT(new A.oC())
-i.ghv()
-if(n.b==null){i=A.jx("Authentication failed",null,null)
-throw A.d(i)}q=1
+j.ghv()
+if(n.b==null){j=A.jx("Authentication failed",null,null)
+throw A.d(j)}q=1
 s=5
 break
 case 3:q=2
-e=p.pop()
-i=A.Y(e)
-if(i instanceof A.hO){j=i
+h=p.pop()
+j=A.Y(h)
+if(j instanceof A.hO){k=j
 A.HV().$1("sigInError")
-o.iT(new A.oE(j.a))}else throw e
+o.iT(new A.oE(k.a))}else throw h
 s=5
 break
 case 2:s=1
