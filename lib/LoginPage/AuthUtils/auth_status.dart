@@ -1,3 +1,5 @@
+import 'package:teashop/LoginPage/AuthUtils/auth_user.dart';
+
 abstract class AuthStatus {
   const AuthStatus();
 }
@@ -7,7 +9,8 @@ class AuthInitial extends AuthStatus {}
 class AuthLoading extends AuthStatus {}
 
 class AuthAuthenticated extends AuthStatus {
-  const AuthAuthenticated();
+  final AuthenticatedUser user;
+  const AuthAuthenticated(this.user);
 }
 
 class AuthPending extends AuthStatus {

@@ -31,6 +31,18 @@ flutter:
     - assets/back.png
     
     - assets/background.jpg
+    - assets/teenatur.jpg
+    - assets/teeplant.jpg
+    - assets/teeplant2.jpg
+    - assets/teeplant3.jpg
+    - assets/teeplantage.jpg
+    - assets/sunrise.jpg
+    - assets/teanight.png
+    - assets/teerot.jpg
+    - assets/teeblätter.jpg
+    - assets/teerot2.jpg
+    - assets/grüntee.jpg
+    - assets/earlgrey.jpg
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions

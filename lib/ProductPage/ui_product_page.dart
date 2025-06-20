@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:teashop/Core/app_bar_button.dart';
@@ -5,6 +7,7 @@ import 'package:teashop/Core/back_button.dart';
 import 'package:teashop/Core/productNumber.dart';
 import 'package:teashop/Core/standard_scaffold.dart';
 import 'package:teashop/Core/ui_core.dart';
+import 'package:teashop/ProductPage/scrollable.dart';
 import 'package:teashop/ShopPage/ui_shop_page.dart';
 
 class ProductDetailPage extends StatefulWidget {
@@ -21,8 +24,6 @@ class ProductDetailPage extends StatefulWidget {
 }
 
 class _ProductDetailPageState extends State<ProductDetailPage> {
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -48,18 +49,11 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Produktbild
-            ClipRRect(
-              borderRadius: BorderRadius.circular(12),
-              child: Image.network(
-                widget.product.imageUrl,
-                width: double.infinity,
-                height: 250,
-                fit: BoxFit.cover,
-              ),
-            ),
+            SiteScrollable2(product: widget.product),                                                                                                                   
+          
             const SizedBox(height: 16),
 
             // Produktname
@@ -71,7 +65,6 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
               ),
             ),
             const SizedBox(height: 8),
-
             // Preis
             Text(
               '€${widget.product.price.toStringAsFixed(2)}',
@@ -89,15 +82,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
               style: const TextStyle(fontSize: 18),
             ),
             const SizedBox(height: 24),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ProductNumber(index: widget.index, context: context,),
-                Button1(
-                onPressed: () {},
-                child: 'Zum Warenkorb hinzufügen'),
-            ],),
-
+            ProductNumber(index: widget.index, context: context,),
           ],
         ),
       ),

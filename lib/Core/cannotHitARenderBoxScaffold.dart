@@ -1,11 +1,16 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:teashop/LoginPage/AuthUtils/auth_status.dart';
+import 'package:teashop/LoginPage/Cubit/auth_cubit.dart';
+import 'package:teashop/ReferalLogic/referal_number_cubit.dart';
 
-class CannotHitRenderScaffold extends StatelessWidget {
-  final AppBar appbar;
+
+
+class CannotHitRenderScaffold extends StatefulWidget {
+    final AppBar appbar;
   final Widget body;
   Widget ?bottomNavigationBar;
-
   CannotHitRenderScaffold({
     Key? key,
     required this.appbar,
@@ -14,45 +19,72 @@ class CannotHitRenderScaffold extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: appbar,
-      body: Stack(
-        fit: StackFit.expand,
-        children: [
-          // Hintergrundbild
-          Image.asset(
-            'assets/background.jpg',
-            fit: BoxFit.cover,
-          ),
-          
-          // Farbfilter oder Opazität für Abdunkelung
-          Container(
-            color: Colors.white.withOpacity(0.7), // oder z.B. Colors.white.withOpacity(0.3)
-          ),
+  State<CannotHitRenderScaffold> createState() => _CannothitarenderboxscaffoldState();
+}
 
-          // Der eigentliche Inhalt
-          Center(
-            child: Container(
-              padding: const EdgeInsets.all(10),
-              margin: const EdgeInsets.all(50),
-              decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.8),
-                borderRadius: BorderRadius.circular(12),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.3),
-                    blurRadius: 10,
-                    offset: Offset(0, 4),
-                  ),
-                ],
-              ),
-              child: body,
-            ),)
-        ],
-      ),
-      bottomNavigationBar: bottomNavigationBar,
+class _CannothitarenderboxscaffoldState extends State<CannotHitRenderScaffold> {
+  double opacity = 0;
+
+     @override
+  void initState() {
+    super.initState();
+    _fetchOpacity();
+  }
+  
+     Future<void> _fetchOpacity() async {
+    try {
+      int count = await context.read<ReferralNumberCubit>().getNumber();
+      setState(() {
+        opacity = 0.07 * (10 - (count % 10));
+      });
+    } catch (e) {
+      print('Fehler beim Abrufen der Referral Count: $e');
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<AuthCubit, AuthStatus>(
+      builder: (context, state) {
+        _fetchOpacity();
+      return Scaffold(
+        appBar: widget.appbar,
+        body: Stack(
+          fit: StackFit.expand,
+          children: [
+            // Hintergrundbild
+            Image.asset(
+              'assets/background.jpg',
+              fit: BoxFit.cover,
+            ),
+            
+            // Farbfilter oder Opazität für Abdunkelung
+            Container(
+              color: Colors.white.withOpacity(0.7), // oder z.B. Colors.white.withOpacity(0.3)
+            ),
+      
+            // Der eigentliche Inhalt
+            Center(
+              child: Container(
+                padding: const EdgeInsets.all(10),
+                margin: const EdgeInsets.all(50),
+                decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.8),
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.3),
+                      blurRadius: 10,
+                      offset: Offset(0, 4),
+                    ),
+                  ],
+                ),
+                child: widget.body,
+              ),)
+          ],
+        ),
+        bottomNavigationBar: widget.bottomNavigationBar,
+      );}
     );
   }
 }
-

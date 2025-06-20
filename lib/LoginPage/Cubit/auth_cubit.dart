@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:teashop/History/histoy_cubit.dart';
 import 'package:teashop/LoginPage/AuthUtils/auth_status.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:teashop/LoginPage/AuthUtils/auth_user.dart';
+import 'package:teashop/ReferalLogic/referal_number_cubit.dart';
 import 'package:teashop/ReferalLogic/referral_cubit.dart';
 import 'package:teashop/main.dart';
 
@@ -29,7 +32,7 @@ class AuthCubit extends Cubit<AuthStatus> {
       );
       final String ?referralCode = context.read<ReferralCubit>().state; // oder getReferralCode(), je nach Cubit-API
       String ?referredBy;
-      zeigeAlertDialog(context, referralCode);
+     
       if (referralCode != null && referralCode.isNotEmpty) {
         referredBy = referralCode;
         addReferral(referralCode);
@@ -78,18 +81,18 @@ class AuthCubit extends Cubit<AuthStatus> {
         .from('users')
         .update({'referral_number': currentNumber + 1})
         .eq('referral_code', referralCode);
-
-      if (updateResponse.error != null) {
-        print('Fehler beim Aktualisieren: ${updateResponse.error!.message}');
-      } else {
-        print('Referral number erfolgreich erhöht');
-      }
     } catch (e) {
       print('Fehler in addReferral: $e');
     }
   }
 
-  Future<void> signIn(String email, String password) async 
+  void buyProducts(BuildContext context, List<int> boughtProducts)
+  {
+    final workerState = state as AuthAuthenticated;
+    context.read<HistoyCubit>().buyProducts(boughtProducts, workerState);
+  }
+
+  Future<void> signIn(String email, String password, BuildContext context) async 
   {
     emit(AuthLoading());
 
@@ -99,24 +102,31 @@ class AuthCubit extends Cubit<AuthStatus> {
         password: password.trim(),
       );
 
-      final userData =
-      await _supabase
-              .from('users')
-              .update({
-                'referred_by': 'kun',
-              })
-              .eq('id', response.user!.id)
-              .select()
-              .single();
-      emit(AuthAuthenticated());
+       final userData = await _supabase
+        .from('users')
+        .select('referral_code, referral_number, produkt1, produkt2, produkt3', ) // Nur referral_code abfragen, falls du nur diese Information benötigst
+        .eq('id', response.user!.id)
+        .single();
+
+    if (userData != null) {
+      // Referral-Code aus den abgerufenen Daten extrahieren
+      String referralCode = userData['referral_code'];
+      int ?referralNumber = userData['referral_number'];
+      int ?nr1 = userData['produkt1'];
+      int ?nr2 = userData['produkt2'];
+      int ?nr3 = userData['produkt3'];
+      context.read<ReferralNumberCubit>().setNumber(referralNumber ?? 0);
+      context.read<ReferralCubit>().setReferralCode(referralCode);
+      context.read<HistoyCubit>().setHistory(nr1, nr2,nr3);
+      // Hier kannst du den Referral-Code verwenden
+    }
+ 
+      emit(AuthAuthenticated(AuthenticatedUser(supabaseUser: response.user!, profileData: userData)));
       final session = _supabase.auth.currentSession;
       if (response.user == null) {
         throw AuthException('Authentication failed');
       }
 
-
-
-        
     } on AuthException catch (e) {
       debugPrint('sigInError');
       emit(AuthError(e.message));

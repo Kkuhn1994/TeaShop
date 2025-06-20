@@ -3,38 +3,62 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:teashop/Core/back_button.dart';
 import 'package:teashop/Core/standard_scaffold.dart';
 import 'package:teashop/Core/ui_core.dart';
-import 'package:teashop/History/histoy_cubit.dart';
-import 'package:teashop/ProductLogic/product_cubit.dart';
+import 'package:teashop/LoginPage/Cubit/auth_cubit.dart';
+import 'package:teashop/ReferalLogic/referal_number_cubit.dart';
+import 'package:teashop/ReferalLogic/referral_cubit.dart';
 
-class AdressInput extends StatefulWidget {
-  const AdressInput({super.key});
+class Profile extends StatefulWidget {
+  const Profile({super.key});
 
   @override
-  State<AdressInput> createState() => _MyWidgetState();
+  State<Profile> createState() => _MyWidgetState();
 }
 
-class _MyWidgetState extends State<AdressInput> {
+class _MyWidgetState extends State<Profile> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
    final TextEditingController nameController = TextEditingController();
+  int? referralCount;
+   String referralLink = "";
 
-   void buyProducts(BuildContext context)
-   {
-      context.read<NumberCubit>().buyProducts(context);
-   }
+  @override
+  void initState() {
+    super.initState();
+    _fetchReferralCount();
+    _fetchReferralCode();
+  }
+
+   Future<void> _fetchReferralCount() async {
+    try {
+      int? count = await context.read<ReferralNumberCubit>().getNumber();
+      setState(() {
+        referralCount = count;
+      });
+    } catch (e) {
+      print('Fehler beim Abrufen der Referral Count: $e');
+    }
+  }
+
+  Future<void> _fetchReferralCode() async {
+    String ?referralCode = await context.read<ReferralCubit>().getReferralCode();
+    setState(() {
+      referralLink = "https://kkuhn1994.github.io/TeaShop/#/referral/$referralCode";
+    });
+  }
   @override
   Widget build(BuildContext context) {
+    
     return StandardScaffold(
       appbar: AppBar(
           title: Text(
-            'Gib deine Adresse ein',
+            'Profil',
             style: TextStyle(
               color: Colors.white, // Set the text color to white
             ),
           ),
           backgroundColor: Colors.deepPurple,
           leading: GoBackButton(
-            location: '/',
+            location: '/products',
           )
         ),
       body: Padding(
@@ -65,14 +89,23 @@ class _MyWidgetState extends State<AdressInput> {
                 ),
               ),
               SizedBox(height: 16),
-            
+              Text(
+                referralLink,
+                style: TextStyle(
+                  color: Colors.blue,
+                  decoration: TextDecoration.underline,
+                ),
+              ),
+              SizedBox(height: 16),
+              Row(children: [
+                Text('Referrals:${referralCount}'),
+              ],),
                 Button1(
-                  onPressed: () => buyProducts(context), 
-                child: '       Kaufen       '),
+                  onPressed: () => {}, 
+                child: '       Daten Speichern       '),
              
             ],
           ),
         ),);
   }
 }
-

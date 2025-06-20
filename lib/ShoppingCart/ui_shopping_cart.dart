@@ -5,6 +5,8 @@ import 'package:teashop/Core/back_button.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:teashop/Core/cannotHitARenderBoxScaffold.dart';
 import 'package:teashop/Core/productNumber.dart';
+import 'package:teashop/LoginPage/AuthUtils/auth_status.dart';
+import 'package:teashop/LoginPage/Cubit/auth_cubit.dart';
 import 'package:teashop/ProductLogic/product_cubit.dart';
 import 'package:teashop/ProductLogic/product_state.dart';
 
@@ -106,7 +108,15 @@ class CartPageUI extends StatelessWidget {
             ),
             Button1(
               onPressed: () {
-                context.go('/loginOrder');
+                    final authState = context.read<AuthCubit>().state;
+
+                if (authState is AuthAuthenticated) {
+                  // Nutzer ist eingeloggt → Zur Kasse
+                  context.go('/adressInput');
+                } else {
+                  // Nicht eingeloggt → Weiterleitung zum Login
+                  context.go('/loginOrder');
+                }
               },
               child: 'Zur Kasse'),
             

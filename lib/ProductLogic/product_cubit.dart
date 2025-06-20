@@ -1,8 +1,13 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:teashop/History/histoy_cubit.dart';
+import 'package:teashop/LoginPage/AuthUtils/auth_status.dart';
+import 'package:teashop/LoginPage/Cubit/auth_cubit.dart';
 import 'product_state.dart';
 
 class NumberCubit extends Cubit<ProductState> {
-  // Initialisiere den Cubit mit einer leeren Liste
+
   NumberCubit() : super(ProductState([0,0,0,0]));
 
   // Methode, um eine Zahl an einem bestimmten Index zu inkrementieren
@@ -25,5 +30,10 @@ class NumberCubit extends Cubit<ProductState> {
       updatedNumbers[index] -= 1;  // Zahl an diesem Index verringern
       emit(ProductState(updatedNumbers));  // Zustand aktualisieren
     }
+  }
+
+  void buyProducts(BuildContext context) async
+  {
+      context.read<AuthCubit>().buyProducts(context, List.from(state.numbers));
   }
 }

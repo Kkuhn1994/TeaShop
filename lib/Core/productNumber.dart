@@ -27,8 +27,8 @@ class ProductNumber extends StatelessWidget {
             children: [ IconButton(
             icon:Image.asset(
             'assets/minus.png',
-            height: 24,
-            width: 24,
+            height: 40,
+            width: 40,
           ),
             onPressed: () => _decreaseQuantity(index), // Menge verringern
                         ),
@@ -38,15 +38,15 @@ class ProductNumber extends StatelessWidget {
               int productQuantity = state.numbers[index];
               return Text(
                 '$productQuantity', // Zeigt die aktuelle Produktzahl an
-                style: TextStyle(fontSize: 20),
+                style: TextStyle(fontSize: 30),
               );
             },
           ),
                         IconButton(
             icon: Image.asset(
             'assets/add.png',
-            height: 24,
-            width: 24,
+            height: 40,
+            width: 40,
           ),
             onPressed: () => _increaseQuantity(index), // Menge erhöhen
                         ),

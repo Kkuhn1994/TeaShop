@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:teashop/AdressInput/adress_input.dart';
+import 'package:teashop/History/histoy_cubit.dart';
+import 'package:teashop/Impressum/impress.dart';
 
 import 'package:teashop/LandingPage/ui_landing_page.dart';
 import 'package:teashop/LoginPage/AuthUtils/auth_service.dart';
@@ -10,7 +12,9 @@ import 'package:teashop/LoginPage/Cubit/auth_cubit.dart';
 import 'package:teashop/LoginPage/UI/login_order_page.dart';
 import 'package:teashop/LoginPage/UI/login_registration_page.dart';
 import 'package:teashop/ProductLogic/product_cubit.dart';
+import 'package:teashop/ReferalLogic/referal_number_cubit.dart';
 import 'package:teashop/ReferalLogic/referral_cubit.dart';
+import 'package:teashop/ReferralSite/referal_site.dart';
 import 'package:teashop/ShopPage/ui_shop_page.dart';
 import 'package:teashop/ShoppingCart/ui_shopping_cart.dart';
 
@@ -71,6 +75,14 @@ class MyApp extends StatelessWidget {
           builder: (context, state) => AdressInput(),
         ),
         GoRoute(
+          path: '/profile',
+          builder: (context, state) => Profile(),
+        ),
+        GoRoute(
+          path: '/impressum',
+          builder: (context, state) => Impressum(),
+        ),
+        GoRoute(
           path: '/referral/:code', // Hier reagieren wir auf den Referral-Link
           builder: (context, state) {
           final referralCode =  state.params['code'];
@@ -95,8 +107,13 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<NumberCubit>(
           create: (context) => NumberCubit(),),
+        BlocProvider<HistoyCubit>(
+          create: (context) => HistoyCubit(Supabase.instance.client),),
         BlocProvider<ReferralCubit>(
           create: (_) => ReferralCubit(),
+        ),
+        BlocProvider<ReferralNumberCubit>(
+          create: (_) => ReferralNumberCubit(),
         ),
         ],
         child: MaterialApp.router(

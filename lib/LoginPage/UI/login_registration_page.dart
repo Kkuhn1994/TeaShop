@@ -18,7 +18,7 @@ class LoginPage extends StatelessWidget {
   final TextEditingController passwordController = TextEditingController();
 
   void login(String email, String password, BuildContext context) {
-    context.read<AuthCubit>().signIn(email, password);
+    context.read<AuthCubit>().signIn(email, password, context);
   }
 
   void signUp(String email, String password, BuildContext context) {
