@@ -19,6 +19,7 @@ class Product {
   final String imageUrl2;
   final String imageUrl3;
   final String imageUrl4;
+  final double rating;
 
   Product({
     required this.name,
@@ -28,6 +29,7 @@ class Product {
     required this.imageUrl2,
     required this.imageUrl3,
     required this.imageUrl4,
+    required this.rating,
   });
 }
 
@@ -46,6 +48,8 @@ class TeaShopProductOverview extends StatelessWidget {
           'assets/teanight.png',
                 imageUrl4:
           'assets/teeblätter.jpg',
+      rating: 4,
+
     ),
     Product(
       name: 'Schwarzer Earl Grey',
@@ -61,6 +65,7 @@ class TeaShopProductOverview extends StatelessWidget {
           'assets/sunrise.jpg',
                 imageUrl4:
           'assets/teeplant2.jpg',
+      rating: 4,
     ),
     Product(
       name: 'Kräutertee Detox',
@@ -75,6 +80,7 @@ class TeaShopProductOverview extends StatelessWidget {
           'assets/teeplantage.jpg',
                 imageUrl4:
           'assets/teeblätter.jpg',
+        rating: 5,
     
     ),
     // Füge weitere Produkte hinzu

@@ -15,6 +15,7 @@ import 'package:teashop/ProductLogic/product_cubit.dart';
 import 'package:teashop/ReferalLogic/referal_number_cubit.dart';
 import 'package:teashop/ReferalLogic/referral_cubit.dart';
 import 'package:teashop/ReferralSite/referal_site.dart';
+import 'package:teashop/RezensionCubit/rezension_cubit.dart';
 import 'package:teashop/ShopPage/ui_shop_page.dart';
 import 'package:teashop/ShoppingCart/ui_shopping_cart.dart';
 
@@ -111,6 +112,9 @@ class MyApp extends StatelessWidget {
           create: (context) => HistoyCubit(Supabase.instance.client),),
         BlocProvider<ReferralCubit>(
           create: (_) => ReferralCubit(),
+        ),
+        BlocProvider<RezensionenCubit>(
+          create: (_) => RezensionenCubit(),
         ),
         BlocProvider<ReferralNumberCubit>(
           create: (_) => ReferralNumberCubit(),

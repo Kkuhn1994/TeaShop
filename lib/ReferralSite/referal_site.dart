@@ -89,7 +89,7 @@ class _MyWidgetState extends State<Profile> {
                 ),
               ),
               SizedBox(height: 16),
-              Text(
+              SelectableText(
                 referralLink,
                 style: TextStyle(
                   color: Colors.blue,
@@ -98,7 +98,14 @@ class _MyWidgetState extends State<Profile> {
               ),
               SizedBox(height: 16),
               Row(children: [
-                Text('Referrals:${referralCount}'),
+                Text(
+              'Referrals: $referralCount',
+              style: TextStyle(
+                fontSize: 20,           // 👈 größer
+                fontWeight: FontWeight.bold, // 👈 fett
+                color: Colors.deepPurple,    // optional
+              ),
+            )
               ],),
                 Button1(
                   onPressed: () => {}, 

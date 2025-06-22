@@ -30,16 +30,35 @@ Widget build(BuildContext context) {
                 ),
               ),
               const SizedBox(width: 16),
-            Text(
-          product.name,
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 18,
-          ),
-        ),
+            Column(
+              children: [
+                Text(
+                          product.name,
+                          style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+                          ),
+                        ),
+                        const SizedBox(height: 16),
+                 Row(
+  children: List.generate(5, (index) {
+    return Padding(
+      padding: const EdgeInsets.only(right: 2.0),
+      child: Image.asset(
+        index < product.rating ? 'assets/star_filled.png' : 'assets/star_empty.png',
+        width: 20,
+        height: 20,
+      ),
+    );
+  }),
+),
+                        
+              ],
+            ),
         ],),
       ),
       subtitle: Text(product.description),
+      
       trailing: Text(
         '€${product.price.toStringAsFixed(2)}',
         style: const TextStyle(

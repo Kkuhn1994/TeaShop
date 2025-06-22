@@ -43,6 +43,8 @@ flutter:
     - assets/teerot2.jpg
     - assets/grüntee.jpg
     - assets/earlgrey.jpg
+    - assets/star_filled.png
+    - assets/star_empty.png
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -64,6 +66,7 @@ dependencies:
   bloc: ^8.1.2
   uni_links: ^0.5.1
   url_launcher: ^6.0.9
+  flutter_rating_bar: ^4.0.1
 
 
 
